@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NevePoint</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>❄️ NevePoint</h1>
+      <div id="score-board">
+        <span>Score: <strong id="score">0</strong></span>
+        <span>Level: <strong id="level">1</strong></span>
+        <span>Lives: <strong id="lives">3</strong></span>
+      </div>
+    </header>
+
+    <main>
+      <canvas id="game-canvas"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="overlay-content">
+          <h2 id="overlay-title">NevePoint</h2>
+          <p id="overlay-message">Catch the snowflakes before they hit the ground!</p>
+          <button id="overlay-btn">Start Game</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Click or tap snowflakes to score points &mdash; don&rsquo;t let them reach the ground!</p>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
