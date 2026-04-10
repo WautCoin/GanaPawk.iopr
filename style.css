@@ -1,0 +1,163 @@
+/* NevePoint – global reset & base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a1628;
+  --accent: #7ecfff;
+  --accent2: #a8e6ff;
+  --text: #e8f4ff;
+  --overlay-bg: rgba(10, 22, 40, 0.88);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Layout ── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(126, 207, 255, 0.15);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-shadow: 0 0 16px rgba(126, 207, 255, 0.6);
+}
+
+#score-board {
+  display: flex;
+  gap: 24px;
+  font-size: 1rem;
+}
+
+#score-board span strong {
+  color: var(--accent);
+}
+
+main {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+footer {
+  padding: 8px 24px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(232, 244, 255, 0.45);
+  flex-shrink: 0;
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-bg);
+  z-index: 20;
+  transition: opacity 0.3s;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 40px 56px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(126, 207, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  max-width: 400px;
+  width: 90%;
+}
+
+.overlay-content h2 {
+  font-size: 2.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(126, 207, 255, 0.7);
+  margin-bottom: 12px;
+  letter-spacing: 3px;
+}
+
+.overlay-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(232, 244, 255, 0.8);
+  margin-bottom: 28px;
+}
+
+#overlay-btn {
+  padding: 12px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 18px rgba(126, 207, 255, 0.5);
+}
+
+#overlay-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 28px rgba(126, 207, 255, 0.75);
+}
+
+#overlay-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Catch pop animation (injected via JS) ── */
+.catch-pop {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent2);
+  text-shadow: 0 0 8px rgba(126, 207, 255, 0.8);
+  animation: pop-up 0.7s ease-out forwards;
+  z-index: 30;
+}
+
+@keyframes pop-up {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -120%) scale(1.4); }
+}
